@@ -8,11 +8,13 @@ Public Class principalVentaForm
             Dim negocio As New VentaNegocio
             listado = negocio.listar()
             dgvVentas.DataSource = listado
+
             dgvVentas.Columns("total").DefaultCellStyle.Format = "$#,##0.00"
             dgvVentas.Columns("id").HeaderText = "ID"
             dgvVentas.Columns("cliente").HeaderText = "Cliente"
             dgvVentas.Columns("fecha").HeaderText = "Fecha"
             dgvVentas.Columns("total").HeaderText = "Total"
+            dgvVentas.Columns("fecha").DefaultCellStyle.Format = "yyyy-MM-dd"
         Catch ex As Exception
             MessageBox.Show("Hubo un error: " + ex.Message)
             Exit Sub
@@ -29,10 +31,17 @@ Public Class principalVentaForm
 
             Dim form2 As New formularioVentaForm
             form2.ShowDialog()
+
             Dim negocio As New VentaNegocio
-            listado = Nothing
             listado = negocio.listar()
+            dgvVentas.DataSource = Nothing
             dgvVentas.DataSource = listado
+            dgvVentas.Columns("total").DefaultCellStyle.Format = "$#,##0.00"
+            dgvVentas.Columns("id").HeaderText = "ID"
+            dgvVentas.Columns("cliente").HeaderText = "Cliente"
+            dgvVentas.Columns("fecha").HeaderText = "Fecha"
+            dgvVentas.Columns("total").HeaderText = "Total"
+            dgvVentas.Columns("fecha").DefaultCellStyle.Format = "yyyy-MM-dd"
         Catch ex As Exception
             MessageBox.Show("Hubo un error: " + ex.Message)
             Exit Sub

@@ -37,8 +37,8 @@ Public Class formularioVentaForm
             factura.cabecera.cliente = CType(cmbCliente.SelectedItem, Cliente)
             factura.cabecera.fecha = CType(fechaPicker.Value, Date)
 
-            If listaDeItems Is Nothing Or listaDeItems.count < 1 Then
-                Throw New Exception("Hubo un error: el cuerpo de la factura no tuvo items")
+            If listaDeItems Is Nothing Then
+                Throw New Exception("El cuerpo de la factura no tuvo items")
             End If
 
             factura.cabecera.total = listaDeItems.Sum(Function(p) p.precioTotal)
@@ -47,6 +47,7 @@ Public Class formularioVentaForm
             negocio.agregar(factura)
 
             MessageBox.Show("Factura guardada correctamente")
+            dgvItems.DataSource = Nothing
             listaDeItems = Nothing
         Catch ex As Exception
             MessageBox.Show("Hubo un error: " + ex.Message)

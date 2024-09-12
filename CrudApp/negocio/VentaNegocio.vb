@@ -19,7 +19,7 @@ Public Class VentaNegocio
                 End If
 
                 aux.fecha = CType(datos.lector("Fecha"), Date)
-                aux.total = If(IsDBNull(datos.lector("Total")), 0, CType(datos.lector("Total"), Decimal))
+                aux.total = If(IsDBNull(datos.lector("total")), 1, CType(datos.lector("Total"), Decimal))
 
                 actualizarTotal(aux.id)
                 lista.Add(aux)
