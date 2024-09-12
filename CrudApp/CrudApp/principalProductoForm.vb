@@ -1,7 +1,7 @@
 ﻿Imports dominio.modelo
 Imports negocio
 
-Public Class productoForm
+Public Class principalProductoForm
     Private listado As New List(Of Producto)
     Private Sub productoForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
@@ -27,5 +27,19 @@ Public Class productoForm
             MessageBox.Show("Hubo un error: " + ex.Message)
             Exit Sub
         End Try
+    End Sub
+
+    Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
+        For Each form In Application.OpenForms
+            If TypeOf form Is formularioProductoForm Then
+                Exit Sub
+            End If
+        Next
+
+        Dim form2 As New formularioProductoForm
+        form2.ShowDialog()
+        Dim negocio As New ProductoNegocio
+        listado = negocio.listar()
+        dgvProductos.DataSource = listado
     End Sub
 End Class

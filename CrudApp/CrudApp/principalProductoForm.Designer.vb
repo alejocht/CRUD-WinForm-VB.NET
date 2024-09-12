@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class productoForm
+Partial Class principalProductoForm
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -23,6 +23,7 @@ Partial Class productoForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.dgvProductos = New System.Windows.Forms.DataGridView()
+        Me.btnAgregar = New System.Windows.Forms.Button()
         CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -34,14 +35,24 @@ Partial Class productoForm
         Me.dgvProductos.Size = New System.Drawing.Size(545, 389)
         Me.dgvProductos.TabIndex = 0
         '
-        'productoForm
+        'btnAgregar
+        '
+        Me.btnAgregar.Location = New System.Drawing.Point(614, 37)
+        Me.btnAgregar.Name = "btnAgregar"
+        Me.btnAgregar.Size = New System.Drawing.Size(122, 23)
+        Me.btnAgregar.TabIndex = 1
+        Me.btnAgregar.Text = "Agregar Producto"
+        Me.btnAgregar.UseVisualStyleBackColor = True
+        '
+        'principalProductoForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.btnAgregar)
         Me.Controls.Add(Me.dgvProductos)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "productoForm"
+        Me.Name = "principalProductoForm"
         Me.Text = "productoForm"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).EndInit()
@@ -50,4 +61,5 @@ Partial Class productoForm
     End Sub
 
     Friend WithEvents dgvProductos As DataGridView
+    Friend WithEvents btnAgregar As Button
 End Class

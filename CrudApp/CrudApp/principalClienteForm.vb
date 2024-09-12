@@ -1,7 +1,7 @@
 ﻿Imports dominio.modelo
 Imports negocio
 
-Public Class clienteForm
+Public Class principalClienteForm
     Private listado As List(Of Cliente)
     Private Sub clienteForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try

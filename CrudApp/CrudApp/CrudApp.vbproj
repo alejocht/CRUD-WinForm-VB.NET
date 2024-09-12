@@ -73,10 +73,22 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clienteForm.Designer.vb">
-      <DependentUpon>clienteForm.vb</DependentUpon>
+    <Compile Include="formularioClienteForm.Designer.vb">
+      <DependentUpon>formularioClienteForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="clienteForm.vb">
+    <Compile Include="formularioClienteForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularioProductoForm.Designer.vb">
+      <DependentUpon>formularioProductoForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="formularioProductoForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="principalClienteForm.Designer.vb">
+      <DependentUpon>principalClienteForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="principalClienteForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="mainForm.vb">
@@ -101,22 +113,25 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="productoForm.Designer.vb">
-      <DependentUpon>productoForm.vb</DependentUpon>
+    <Compile Include="principalProductoForm.Designer.vb">
+      <DependentUpon>principalProductoForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="productoForm.vb">
+    <Compile Include="principalProductoForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ventaForm.Designer.vb">
-      <DependentUpon>ventaForm.vb</DependentUpon>
+    <Compile Include="principalVentaForm.Designer.vb">
+      <DependentUpon>principalVentaForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="ventaForm.vb">
+    <Compile Include="principalVentaForm.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="clienteForm.resx">
-      <DependentUpon>clienteForm.vb</DependentUpon>
+    <EmbeddedResource Include="formularioProductoForm.resx">
+      <DependentUpon>formularioProductoForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="principalClienteForm.resx">
+      <DependentUpon>principalClienteForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mainForm.resx">
       <DependentUpon>mainForm.vb</DependentUpon>
@@ -127,11 +142,11 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="productoForm.resx">
-      <DependentUpon>productoForm.vb</DependentUpon>
+    <EmbeddedResource Include="principalProductoForm.resx">
+      <DependentUpon>principalProductoForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ventaForm.resx">
-      <DependentUpon>ventaForm.vb</DependentUpon>
+    <EmbeddedResource Include="principalVentaForm.resx">
+      <DependentUpon>principalVentaForm.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
