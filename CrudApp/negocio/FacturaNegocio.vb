@@ -14,4 +14,23 @@ Public Class FacturaNegocio
             Throw ex
         End Try
     End Function
+
+    Public Sub agregar(factura As Factura)
+        Try
+            Dim negocio As New VentaNegocio
+            Dim negocioVentaItem As New VentaItemNegocio
+            Dim listadeVentas As New List(Of Venta)
+
+            negocio.agregar(factura.cabecera)
+            listadeVentas = negocio.listar()
+            Dim ultimoId As Integer = listadeVentas.Last.id
+
+            For Each ventaItem In factura.detalle
+                ventaItem.idVenta = ultimoId
+                negocioVentaItem.agregar(ventaItem)
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
 End Class

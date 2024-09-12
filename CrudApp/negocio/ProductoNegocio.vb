@@ -96,13 +96,8 @@ Public Class ProductoNegocio
                                     from productos P")
             datos.ejecutarLectura()
 
-            Console.WriteLine($"{"ID".PadRight(4)} {"Nombre".PadRight(30)} {"ene".PadRight(4)} {"feb".PadRight(4)} {"mar".PadRight(4)} {"abr".PadRight(4)} {"may".PadRight(4)} {"jun".PadRight(4)} {"jul".PadRight(4)} {"ago".PadRight(4)} {"sep".PadRight(4)} {"oct".PadRight(4)} {"nov".PadRight(4)} {"dic".PadRight(4)}")
-            Console.WriteLine(New String("-"c, 100))
-            While datos.lector.Read()
-                Console.WriteLine($"{ If(IsDBNull(datos.lector("id")), "-1", CType(datos.lector("id"), String)).PadRight(4)} { If(IsDBNull(datos.lector("Nombre")), " ", CType(datos.lector("Nombre"), String)).PadRight(30)} { If(IsDBNull(datos.lector("ene")), "0", CType(datos.lector("ene"), String)).PadRight(4)} { If(IsDBNull(datos.lector("feb")), "0", CType(datos.lector("feb"), String)).PadRight(4)} { If(IsDBNull(datos.lector("mar")), "0", CType(datos.lector("mar"), String)).PadRight(4)} { If(IsDBNull(datos.lector("abr")), "0", CType(datos.lector("abr"), String)).PadRight(4)} { If(IsDBNull(datos.lector("may")), "0", CType(datos.lector("may"), String)).PadRight(4)} { If(IsDBNull(datos.lector("jun")), "0", CType(datos.lector("jun"), String)).PadRight(4)} { If(IsDBNull(datos.lector("jul")), "0", CType(datos.lector("jul"), String)).PadRight(4)} { If(IsDBNull(datos.lector("ago")), "0", CType(datos.lector("ago"), String)).PadRight(4)} { If(IsDBNull(datos.lector("sep")), "0", CType(datos.lector("sep"), String)).PadRight(4)} { If(IsDBNull(datos.lector("oct")), "0", CType(datos.lector("oct"), String)).PadRight(4)} { If(IsDBNull(datos.lector("nov")), "0", CType(datos.lector("nov"), String)).PadRight(4)} { If(IsDBNull(datos.lector("dic")), "0", CType(datos.lector("dic"), String)).PadRight(4)}")
-            End While
         Catch ex As Exception
-
+            Throw ex
         End Try
 
     End Sub

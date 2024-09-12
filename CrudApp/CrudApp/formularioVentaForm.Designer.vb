@@ -32,7 +32,14 @@ Partial Class formularioVentaForm
         Me.lblTotal = New System.Windows.Forms.Label()
         Me.lblImporteTotal = New System.Windows.Forms.Label()
         Me.btnAgregarItem = New System.Windows.Forms.Button()
+        Me.groupBoxNuevoItem = New System.Windows.Forms.GroupBox()
+        Me.txtCantidad = New System.Windows.Forms.NumericUpDown()
+        Me.cmbProducto = New System.Windows.Forms.ComboBox()
+        Me.lblCategoria = New System.Windows.Forms.Label()
+        Me.lblProducto = New System.Windows.Forms.Label()
         CType(Me.dgvItems, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.groupBoxNuevoItem.SuspendLayout()
+        CType(Me.txtCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'fechaPicker
@@ -80,7 +87,7 @@ Partial Class formularioVentaForm
         '
         'btnAgregar
         '
-        Me.btnAgregar.Location = New System.Drawing.Point(272, 408)
+        Me.btnAgregar.Location = New System.Drawing.Point(273, 542)
         Me.btnAgregar.Name = "btnAgregar"
         Me.btnAgregar.Size = New System.Drawing.Size(75, 23)
         Me.btnAgregar.TabIndex = 5
@@ -89,7 +96,7 @@ Partial Class formularioVentaForm
         '
         'btnCancelar
         '
-        Me.btnCancelar.Location = New System.Drawing.Point(32, 408)
+        Me.btnCancelar.Location = New System.Drawing.Point(33, 542)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(75, 23)
         Me.btnCancelar.TabIndex = 6
@@ -116,19 +123,69 @@ Partial Class formularioVentaForm
         'btnAgregarItem
         '
         Me.btnAgregarItem.AutoEllipsis = True
-        Me.btnAgregarItem.Location = New System.Drawing.Point(295, 122)
+        Me.btnAgregarItem.Location = New System.Drawing.Point(267, 95)
         Me.btnAgregarItem.Name = "btnAgregarItem"
         Me.btnAgregarItem.Size = New System.Drawing.Size(75, 23)
         Me.btnAgregarItem.TabIndex = 9
         Me.btnAgregarItem.Text = "Agregar Item"
         Me.btnAgregarItem.UseVisualStyleBackColor = True
         '
+        'groupBoxNuevoItem
+        '
+        Me.groupBoxNuevoItem.Controls.Add(Me.txtCantidad)
+        Me.groupBoxNuevoItem.Controls.Add(Me.btnAgregarItem)
+        Me.groupBoxNuevoItem.Controls.Add(Me.cmbProducto)
+        Me.groupBoxNuevoItem.Controls.Add(Me.lblCategoria)
+        Me.groupBoxNuevoItem.Controls.Add(Me.lblProducto)
+        Me.groupBoxNuevoItem.Location = New System.Drawing.Point(22, 387)
+        Me.groupBoxNuevoItem.Name = "groupBoxNuevoItem"
+        Me.groupBoxNuevoItem.Size = New System.Drawing.Size(348, 124)
+        Me.groupBoxNuevoItem.TabIndex = 10
+        Me.groupBoxNuevoItem.TabStop = False
+        Me.groupBoxNuevoItem.Text = "Nuevo Item"
+        '
+        'txtCantidad
+        '
+        Me.txtCantidad.Location = New System.Drawing.Point(100, 66)
+        Me.txtCantidad.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.txtCantidad.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.txtCantidad.Name = "txtCantidad"
+        Me.txtCantidad.Size = New System.Drawing.Size(144, 20)
+        Me.txtCantidad.TabIndex = 21
+        Me.txtCantidad.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'cmbProducto
+        '
+        Me.cmbProducto.FormattingEnabled = True
+        Me.cmbProducto.Location = New System.Drawing.Point(99, 27)
+        Me.cmbProducto.Name = "cmbProducto"
+        Me.cmbProducto.Size = New System.Drawing.Size(145, 21)
+        Me.cmbProducto.TabIndex = 20
+        '
+        'lblCategoria
+        '
+        Me.lblCategoria.AutoSize = True
+        Me.lblCategoria.Location = New System.Drawing.Point(31, 68)
+        Me.lblCategoria.Name = "lblCategoria"
+        Me.lblCategoria.Size = New System.Drawing.Size(49, 13)
+        Me.lblCategoria.TabIndex = 19
+        Me.lblCategoria.Text = "Cantidad"
+        '
+        'lblProducto
+        '
+        Me.lblProducto.AutoSize = True
+        Me.lblProducto.Location = New System.Drawing.Point(30, 30)
+        Me.lblProducto.Name = "lblProducto"
+        Me.lblProducto.Size = New System.Drawing.Size(50, 13)
+        Me.lblProducto.TabIndex = 18
+        Me.lblProducto.Text = "Producto"
+        '
         'formularioVentaForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(395, 450)
-        Me.Controls.Add(Me.btnAgregarItem)
+        Me.ClientSize = New System.Drawing.Size(395, 588)
+        Me.Controls.Add(Me.groupBoxNuevoItem)
         Me.Controls.Add(Me.lblImporteTotal)
         Me.Controls.Add(Me.lblTotal)
         Me.Controls.Add(Me.btnCancelar)
@@ -139,13 +196,16 @@ Partial Class formularioVentaForm
         Me.Controls.Add(Me.cmbCliente)
         Me.Controls.Add(Me.fechaPicker)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(411, 489)
+        Me.MaximumSize = New System.Drawing.Size(411, 627)
         Me.MinimizeBox = False
-        Me.MinimumSize = New System.Drawing.Size(411, 489)
+        Me.MinimumSize = New System.Drawing.Size(411, 627)
         Me.Name = "formularioVentaForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "formularioVentaForm"
         CType(Me.dgvItems, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.groupBoxNuevoItem.ResumeLayout(False)
+        Me.groupBoxNuevoItem.PerformLayout()
+        CType(Me.txtCantidad, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -161,4 +221,9 @@ Partial Class formularioVentaForm
     Friend WithEvents lblTotal As Label
     Friend WithEvents lblImporteTotal As Label
     Friend WithEvents btnAgregarItem As Button
+    Friend WithEvents groupBoxNuevoItem As GroupBox
+    Friend WithEvents txtCantidad As NumericUpDown
+    Friend WithEvents cmbProducto As ComboBox
+    Friend WithEvents lblCategoria As Label
+    Friend WithEvents lblProducto As Label
 End Class
