@@ -53,7 +53,7 @@ Namespace modelo
         End Property
 
         Public Overrides Function ToString() As String
-            Return "Cliente [ ID: " + id.ToString + " Cliente: " + cliente + " Telefono: " + telefono + " Correo: " + correo + " ]"
+            Return cliente
         End Function
     End Class
 End Namespace
