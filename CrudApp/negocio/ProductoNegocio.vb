@@ -1,5 +1,5 @@
-﻿
-Imports modelo.modelo
+﻿Imports dominio
+Imports dominio.modelo
 Public Class ProductoNegocio
     Public Function listar() As List(Of Producto)
         Dim datos As New AccesoDatos

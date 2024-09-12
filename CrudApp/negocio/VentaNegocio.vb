@@ -1,4 +1,5 @@
-﻿Imports modelo.modelo
+﻿Imports dominio
+Imports dominio.modelo
 
 Public Class VentaNegocio
     Public Function listar() As List(Of Venta)
@@ -12,10 +13,15 @@ Public Class VentaNegocio
                 Dim negocioCliente As New ClienteNegocio
                 aux.id = CType(datos.lector("ID"), Integer)
                 aux.cliente = negocioCliente.listar(CType(datos.lector("IDCliente"), Integer))
+
+                If aux.cliente Is Nothing Then
+                    Throw New Exception
+                End If
+
                 aux.fecha = CType(datos.lector("Fecha"), Date)
                 aux.total = If(IsDBNull(datos.lector("Total")), 0, CType(datos.lector("Total"), Decimal))
 
-                modificarTotal(aux.id)
+                actualizarTotal(aux.id)
                 lista.Add(aux)
             End While
             Return lista
@@ -37,6 +43,11 @@ Public Class VentaNegocio
             While (datos.lector.Read())
                 aux.id = CType(datos.lector("ID"), Integer)
                 aux.cliente = negocioCliente.listar(CType(datos.lector("IDCliente"), Integer))
+
+                If aux.cliente Is Nothing Then
+                    Throw New Exception
+                End If
+
                 aux.fecha = CType(datos.lector("Fecha"), Date)
                 aux.total = If(IsDBNull(datos.lector("Total")), 0, CType(datos.lector("Total"), Decimal))
             End While
@@ -69,7 +80,7 @@ Public Class VentaNegocio
             datos.setearParametro("@id", venta.id)
             datos.setearParametro("@idcliente", venta.cliente.id)
             datos.setearParametro("@fecha", venta.fecha)
-            modificarTotal(venta.id)
+            actualizarTotal(venta.id)
             datos.ejecutarAccion()
         Catch ex As Exception
             Throw ex
@@ -78,7 +89,7 @@ Public Class VentaNegocio
         End Try
     End Sub
 
-    Public Sub modificarTotal(id As Integer)
+    Public Sub actualizarTotal(id As Integer)
         Dim datos As New AccesoDatos
         Try
             datos.setearConsulta("UPDATE ventas SET Total = Totales.TotalVentas FROM ventas JOIN (SELECT IDVenta, SUM(PrecioTotal) AS TotalVentas FROM ventasitems GROUP BY IDVenta) AS Totales ON ventas.ID = Totales.IDVenta WHERE ventas.ID = @id")

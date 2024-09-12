@@ -1,5 +1,5 @@
-﻿Imports modelo
-Imports modelo.modelo
+﻿Imports dominio
+Imports dominio.modelo
 
 Public Class FacturaNegocio
     Public Function listar(id As Integer) As Factura

@@ -53,7 +53,7 @@
         End Property
 
         Public Overrides Function ToString() As String
-            Return $"{id.ToString.PadRight(10)} {nombre.PadRight(50)} {"$" + precio.ToString.PadRight(20)} {categoria.PadRight(20)}"
+            Return "Producto [ ID: " + id.ToString + " Nombre: " + nombre + " Precio: " + precio + " Categoria: " + categoria + " ]"
         End Function
     End Class
 End Namespace

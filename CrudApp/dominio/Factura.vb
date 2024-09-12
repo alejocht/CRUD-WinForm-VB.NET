@@ -1,4 +1,5 @@
-﻿Imports modelo.modelo
+﻿Imports dominio
+Imports dominio.modelo
 
 Public Class Factura
     Private _cabecera As New Venta

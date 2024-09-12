@@ -1,4 +1,4 @@
-﻿Imports modelo.modelo
+﻿Imports dominio.modelo
 
 Public Class ClienteNegocio
     Public Function listar() As List(Of Cliente)
