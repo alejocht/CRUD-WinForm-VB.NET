@@ -37,4 +37,8 @@ Public Class principalVentaForm
             Exit Sub
         End Try
     End Sub
+
+    Private Sub dgvVentas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvVentas.CellContentClick
+
+    End Sub
 End Class

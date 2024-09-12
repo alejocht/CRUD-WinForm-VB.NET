@@ -29,6 +29,7 @@ Partial Class principalClienteForm
         '
         'dgvClientes
         '
+        Me.dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvClientes.Location = New System.Drawing.Point(39, 36)
         Me.dgvClientes.Name = "dgvClientes"

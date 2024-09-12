@@ -45,7 +45,7 @@ Partial Class formularioVentaForm
         'fechaPicker
         '
         Me.fechaPicker.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.fechaPicker.Location = New System.Drawing.Point(102, 70)
+        Me.fechaPicker.Location = New System.Drawing.Point(401, 32)
         Me.fechaPicker.Name = "fechaPicker"
         Me.fechaPicker.Size = New System.Drawing.Size(200, 20)
         Me.fechaPicker.TabIndex = 0
@@ -71,7 +71,7 @@ Partial Class formularioVentaForm
         'lblFecha
         '
         Me.lblFecha.AutoSize = True
-        Me.lblFecha.Location = New System.Drawing.Point(29, 76)
+        Me.lblFecha.Location = New System.Drawing.Point(328, 38)
         Me.lblFecha.Name = "lblFecha"
         Me.lblFecha.Size = New System.Drawing.Size(37, 13)
         Me.lblFecha.TabIndex = 3
@@ -79,15 +79,17 @@ Partial Class formularioVentaForm
         '
         'dgvItems
         '
+        Me.dgvItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvItems.Location = New System.Drawing.Point(22, 151)
         Me.dgvItems.Name = "dgvItems"
-        Me.dgvItems.Size = New System.Drawing.Size(348, 218)
+        Me.dgvItems.Size = New System.Drawing.Size(617, 218)
         Me.dgvItems.TabIndex = 4
         '
         'btnAgregar
         '
-        Me.btnAgregar.Location = New System.Drawing.Point(273, 542)
+        Me.btnAgregar.Location = New System.Drawing.Point(543, 542)
         Me.btnAgregar.Name = "btnAgregar"
         Me.btnAgregar.Size = New System.Drawing.Size(75, 23)
         Me.btnAgregar.TabIndex = 5
@@ -115,7 +117,7 @@ Partial Class formularioVentaForm
         'lblImporteTotal
         '
         Me.lblImporteTotal.AutoSize = True
-        Me.lblImporteTotal.Location = New System.Drawing.Point(102, 109)
+        Me.lblImporteTotal.Location = New System.Drawing.Point(99, 109)
         Me.lblImporteTotal.Name = "lblImporteTotal"
         Me.lblImporteTotal.Size = New System.Drawing.Size(0, 13)
         Me.lblImporteTotal.TabIndex = 8
@@ -123,7 +125,7 @@ Partial Class formularioVentaForm
         'btnAgregarItem
         '
         Me.btnAgregarItem.AutoEllipsis = True
-        Me.btnAgregarItem.Location = New System.Drawing.Point(267, 95)
+        Me.btnAgregarItem.Location = New System.Drawing.Point(33, 80)
         Me.btnAgregarItem.Name = "btnAgregarItem"
         Me.btnAgregarItem.Size = New System.Drawing.Size(75, 23)
         Me.btnAgregarItem.TabIndex = 9
@@ -139,14 +141,14 @@ Partial Class formularioVentaForm
         Me.groupBoxNuevoItem.Controls.Add(Me.lblProducto)
         Me.groupBoxNuevoItem.Location = New System.Drawing.Point(22, 387)
         Me.groupBoxNuevoItem.Name = "groupBoxNuevoItem"
-        Me.groupBoxNuevoItem.Size = New System.Drawing.Size(348, 124)
+        Me.groupBoxNuevoItem.Size = New System.Drawing.Size(617, 124)
         Me.groupBoxNuevoItem.TabIndex = 10
         Me.groupBoxNuevoItem.TabStop = False
         Me.groupBoxNuevoItem.Text = "Nuevo Item"
         '
         'txtCantidad
         '
-        Me.txtCantidad.Location = New System.Drawing.Point(100, 66)
+        Me.txtCantidad.Location = New System.Drawing.Point(363, 28)
         Me.txtCantidad.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.txtCantidad.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.txtCantidad.Name = "txtCantidad"
@@ -156,6 +158,7 @@ Partial Class formularioVentaForm
         '
         'cmbProducto
         '
+        Me.cmbProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbProducto.FormattingEnabled = True
         Me.cmbProducto.Location = New System.Drawing.Point(99, 27)
         Me.cmbProducto.Name = "cmbProducto"
@@ -165,7 +168,7 @@ Partial Class formularioVentaForm
         'lblCategoria
         '
         Me.lblCategoria.AutoSize = True
-        Me.lblCategoria.Location = New System.Drawing.Point(31, 68)
+        Me.lblCategoria.Location = New System.Drawing.Point(294, 30)
         Me.lblCategoria.Name = "lblCategoria"
         Me.lblCategoria.Size = New System.Drawing.Size(49, 13)
         Me.lblCategoria.TabIndex = 19
@@ -184,7 +187,7 @@ Partial Class formularioVentaForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(395, 588)
+        Me.ClientSize = New System.Drawing.Size(663, 588)
         Me.Controls.Add(Me.groupBoxNuevoItem)
         Me.Controls.Add(Me.lblImporteTotal)
         Me.Controls.Add(Me.lblTotal)
@@ -196,7 +199,6 @@ Partial Class formularioVentaForm
         Me.Controls.Add(Me.cmbCliente)
         Me.Controls.Add(Me.fechaPicker)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(411, 627)
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(411, 627)
         Me.Name = "formularioVentaForm"

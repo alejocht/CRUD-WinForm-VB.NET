@@ -3,7 +3,7 @@ Imports dominio.modelo
 Imports negocio
 
 Public Class formularioVentaForm
-    Private listaDeItems As List(Of VentaItem)
+    Private listaDeItems As New List(Of VentaItem)
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles lblCliente.Click
 
     End Sub
@@ -52,6 +52,35 @@ Public Class formularioVentaForm
     End Sub
 
     Private Sub btnAgregarItem_Click(sender As Object, e As EventArgs) Handles btnAgregarItem.Click
+        Try
+            Dim producto As New Producto
+            Dim ventaItem As New VentaItem
+            producto = CType(cmbProducto.SelectedItem, Producto)
+            ventaItem.producto = producto
+            ventaItem.precioUnitario = producto.precio
+            ventaItem.cantidad = txtCantidad.Value
+            ventaItem.precioTotal = ventaItem.precioUnitario * ventaItem.cantidad
+            listaDeItems.Add(ventaItem)
+            dgvItems.DataSource = Nothing
+            dgvItems.DataSource = listaDeItems
+
+            dgvItems.Columns("id").Visible = False
+            dgvItems.Columns("idventa").Visible = False
+            dgvItems.Columns("producto").HeaderText = "Producto"
+            dgvItems.Columns("precioUnitario").HeaderText = "Precio"
+            dgvItems.Columns("cantidad").HeaderText = "Cantidad"
+            dgvItems.Columns("precioTotal").HeaderText = "SubTotal"
+            dgvItems.Columns("precioUnitario").DefaultCellStyle.Format = "$#,##0.00"
+            dgvItems.Columns("precioTotal").DefaultCellStyle.Format = "$#,##0.00"
+
+            lblImporteTotal.Text = listaDeItems.Sum(Function(p) p.precioTotal).ToString("$#,##0.00")
+        Catch ex As Exception
+            MessageBox.Show("Hubo un error: " + ex.Message)
+            Exit Sub
+        End Try
+    End Sub
+
+    Private Sub dgvItems_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvItems.CellContentClick
 
     End Sub
 End Class

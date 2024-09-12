@@ -29,6 +29,8 @@ Partial Class principalVentaForm
         '
         'dgvVentas
         '
+        Me.dgvVentas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvVentas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvVentas.Location = New System.Drawing.Point(29, 37)
         Me.dgvVentas.Name = "dgvVentas"
