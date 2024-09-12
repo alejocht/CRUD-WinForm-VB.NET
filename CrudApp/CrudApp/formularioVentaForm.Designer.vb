@@ -82,8 +82,10 @@ Partial Class formularioVentaForm
         Me.dgvItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvItems.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvItems.Location = New System.Drawing.Point(22, 151)
         Me.dgvItems.Name = "dgvItems"
+        Me.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvItems.Size = New System.Drawing.Size(617, 218)
         Me.dgvItems.TabIndex = 4
         '

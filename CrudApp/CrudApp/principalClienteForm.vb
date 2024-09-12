@@ -31,6 +31,7 @@ Public Class principalClienteForm
             Dim negocio As New ClienteNegocio
             listado = negocio.listar()
             dgvClientes.DataSource = listado
+            dgvClientes.Refresh()
         Catch ex As Exception
             MessageBox.Show("Hubo un error: " + ex.Message)
             Exit Sub

@@ -30,6 +30,7 @@ Public Class principalVentaForm
             Dim form2 As New formularioVentaForm
             form2.ShowDialog()
             Dim negocio As New VentaNegocio
+            listado = Nothing
             listado = negocio.listar()
             dgvVentas.DataSource = listado
         Catch ex As Exception

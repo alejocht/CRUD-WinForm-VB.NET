@@ -41,10 +41,13 @@ Public Class formularioVentaForm
                 Throw New Exception("Hubo un error: el cuerpo de la factura no tuvo items")
             End If
 
-            factura.cabecera.total = listaDeItems.Sum(Function(p) p.precioUnitario)
+            factura.cabecera.total = listaDeItems.Sum(Function(p) p.precioTotal)
             factura.detalle = listaDeItems
 
             negocio.agregar(factura)
+
+            MessageBox.Show("Factura guardada correctamente")
+            listaDeItems = Nothing
         Catch ex As Exception
             MessageBox.Show("Hubo un error: " + ex.Message)
             Exit Sub
