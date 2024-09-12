@@ -23,6 +23,7 @@ Partial Class principalClienteForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.dgvClientes = New System.Windows.Forms.DataGridView()
+        Me.btnAgregar = New System.Windows.Forms.Button()
         CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -34,14 +35,24 @@ Partial Class principalClienteForm
         Me.dgvClientes.Size = New System.Drawing.Size(545, 389)
         Me.dgvClientes.TabIndex = 1
         '
-        'clienteForm
+        'btnAgregar
+        '
+        Me.btnAgregar.Location = New System.Drawing.Point(624, 36)
+        Me.btnAgregar.Name = "btnAgregar"
+        Me.btnAgregar.Size = New System.Drawing.Size(122, 23)
+        Me.btnAgregar.TabIndex = 2
+        Me.btnAgregar.Text = "Agregar Cliente"
+        Me.btnAgregar.UseVisualStyleBackColor = True
+        '
+        'principalClienteForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.btnAgregar)
         Me.Controls.Add(Me.dgvClientes)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "clienteForm"
+        Me.Name = "principalClienteForm"
         Me.Text = "clienteForm"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).EndInit()
@@ -50,4 +61,5 @@ Partial Class principalClienteForm
     End Sub
 
     Friend WithEvents dgvClientes As DataGridView
+    Friend WithEvents btnAgregar As Button
 End Class

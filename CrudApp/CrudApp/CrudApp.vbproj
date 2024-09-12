@@ -85,6 +85,12 @@
     <Compile Include="formularioProductoForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="formularioVentaForm.Designer.vb">
+      <DependentUpon>formularioVentaForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="formularioVentaForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="principalClienteForm.Designer.vb">
       <DependentUpon>principalClienteForm.vb</DependentUpon>
     </Compile>
@@ -127,8 +133,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="formularioClienteForm.resx">
+      <DependentUpon>formularioClienteForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formularioProductoForm.resx">
       <DependentUpon>formularioProductoForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularioVentaForm.resx">
+      <DependentUpon>formularioVentaForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="principalClienteForm.resx">
       <DependentUpon>principalClienteForm.vb</DependentUpon>

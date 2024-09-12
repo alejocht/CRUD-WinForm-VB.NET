@@ -87,7 +87,7 @@ Partial Class formularioProductoForm
         Me.btnAgregar.Name = "btnAgregar"
         Me.btnAgregar.Size = New System.Drawing.Size(75, 23)
         Me.btnAgregar.TabIndex = 6
-        Me.btnAgregar.Text = "Agregar"
+        Me.btnAgregar.Text = "Guardar"
         Me.btnAgregar.UseVisualStyleBackColor = True
         '
         'btnCancelar

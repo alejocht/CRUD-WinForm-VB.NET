@@ -23,6 +23,7 @@ Partial Class principalVentaForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.dgvVentas = New System.Windows.Forms.DataGridView()
+        Me.btnAgregar = New System.Windows.Forms.Button()
         CType(Me.dgvVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -34,16 +35,26 @@ Partial Class principalVentaForm
         Me.dgvVentas.Size = New System.Drawing.Size(545, 389)
         Me.dgvVentas.TabIndex = 1
         '
-        'ventaForm
+        'btnAgregar
+        '
+        Me.btnAgregar.Location = New System.Drawing.Point(609, 37)
+        Me.btnAgregar.Name = "btnAgregar"
+        Me.btnAgregar.Size = New System.Drawing.Size(122, 23)
+        Me.btnAgregar.TabIndex = 2
+        Me.btnAgregar.Text = "Agregar Venta"
+        Me.btnAgregar.UseVisualStyleBackColor = True
+        '
+        'principalVentaForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.btnAgregar)
         Me.Controls.Add(Me.dgvVentas)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "ventaForm"
+        Me.Name = "principalVentaForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "ventaForm"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -53,4 +64,5 @@ Partial Class principalVentaForm
     End Sub
 
     Friend WithEvents dgvVentas As DataGridView
+    Friend WithEvents btnAgregar As Button
 End Class
