@@ -47,4 +47,26 @@ Public Class principalProductoForm
             Exit Sub
         End Try
     End Sub
+
+    Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
+        Try
+            For Each form In Application.OpenForms
+                If TypeOf form Is formularioProductoForm Then
+                    Exit Sub
+                End If
+            Next
+
+            Dim producto As New Producto
+            producto = CType(dgvProductos.CurrentRow.DataBoundItem, Producto)
+
+            Dim form2 As New formularioProductoForm(producto)
+            form2.ShowDialog()
+            Dim negocio As New ProductoNegocio
+            listado = negocio.listar()
+            dgvProductos.DataSource = listado
+        Catch ex As Exception
+            MessageBox.Show("Hubo un error: " + ex.Message)
+            Exit Sub
+        End Try
+    End Sub
 End Class

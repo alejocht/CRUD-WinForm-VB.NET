@@ -2,6 +2,15 @@
 Imports negocio
 
 Public Class formularioProductoForm
+    Private producto As Producto
+    Public Sub New()
+        InitializeComponent()
+    End Sub
+    Public Sub New(producto As Producto)
+        InitializeComponent()
+        Me.producto = producto
+    End Sub
+
     Private Sub txtTelefono_TextChanged(sender As Object, e As EventArgs) Handles txtPrecio.TextChanged
 
     End Sub
@@ -27,6 +36,18 @@ Public Class formularioProductoForm
     End Sub
 
     Private Sub formularioProductoForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Try
+            If producto IsNot Nothing Then
+                txtNombre.Text = producto.nombre
+                txtPrecio.Text = producto.precio
+                txtCategoria.Text = producto.categoria
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub modificar()
 
     End Sub
 End Class

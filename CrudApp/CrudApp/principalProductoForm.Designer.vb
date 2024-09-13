@@ -24,6 +24,7 @@ Partial Class principalProductoForm
     Private Sub InitializeComponent()
         Me.dgvProductos = New System.Windows.Forms.DataGridView()
         Me.btnAgregar = New System.Windows.Forms.Button()
+        Me.btnModificar = New System.Windows.Forms.Button()
         CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -48,11 +49,21 @@ Partial Class principalProductoForm
         Me.btnAgregar.Text = "Agregar Producto"
         Me.btnAgregar.UseVisualStyleBackColor = True
         '
+        'btnModificar
+        '
+        Me.btnModificar.Location = New System.Drawing.Point(614, 75)
+        Me.btnModificar.Name = "btnModificar"
+        Me.btnModificar.Size = New System.Drawing.Size(122, 23)
+        Me.btnModificar.TabIndex = 2
+        Me.btnModificar.Text = "Modificar Producto"
+        Me.btnModificar.UseVisualStyleBackColor = True
+        '
         'principalProductoForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.btnModificar)
         Me.Controls.Add(Me.btnAgregar)
         Me.Controls.Add(Me.dgvProductos)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -66,4 +77,5 @@ Partial Class principalProductoForm
 
     Friend WithEvents dgvProductos As DataGridView
     Friend WithEvents btnAgregar As Button
+    Friend WithEvents btnModificar As Button
 End Class

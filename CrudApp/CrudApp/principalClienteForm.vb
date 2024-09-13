@@ -22,6 +22,7 @@ Public Class principalClienteForm
         Try
             For Each form In Application.OpenForms
                 If TypeOf form Is formularioClienteForm Then
+                    MessageBox.Show("Ya existe esta ventana abierta")
                     Exit Sub
                 End If
             Next
@@ -35,6 +36,26 @@ Public Class principalClienteForm
         Catch ex As Exception
             MessageBox.Show("Hubo un error: " + ex.Message)
             Exit Sub
+        End Try
+    End Sub
+
+    Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
+        Try
+            For Each form In Application.OpenForms
+                If TypeOf form Is formularioClienteForm Then
+                    MessageBox.Show("Ya existe esta ventana abierta")
+                    Exit Sub
+                End If
+            Next
+
+            Dim cliente As New Cliente
+            cliente = CType(dgvClientes.CurrentRow.DataBoundItem, Cliente)
+
+            Dim form2 As New formularioClienteForm(cliente)
+            form2.ShowDialog()
+
+        Catch ex As Exception
+
         End Try
     End Sub
 End Class
