@@ -1,5 +1,5 @@
-USE [pruebademo]
-GO
+--USE [pruebademo]
+--GO
 
 -- Vaciar las tablas
 --TRUNCATE TABLE [dbo].[ventasitems];

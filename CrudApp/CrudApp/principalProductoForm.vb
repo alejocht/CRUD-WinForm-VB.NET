@@ -98,13 +98,32 @@ Public Class principalProductoForm
     End Sub
 
     Private Sub btnReporte_Click(sender As Object, e As EventArgs) Handles btnReporte.Click
-        For Each form In Application.OpenForms
-            If TypeOf form Is reporteProductoForm Then
-                Exit Sub
-            End If
-        Next
+        Try
+            For Each form In Application.OpenForms
+                If TypeOf form Is reporteProductoForm Then
+                    Exit Sub
+                End If
+            Next
 
-        Dim form2 As New reporteProductoForm()
-        form2.ShowDialog()
+            Dim form2 As New reporteProductoForm()
+            form2.ShowDialog()
+        Catch ex As Exception
+            MessageBox.Show("Hubo un error: " + ex.Message)
+            Exit Sub
+        End Try
+    End Sub
+
+    Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
+        Try
+            Dim producto As New Producto
+            Dim negocio As New ProductoNegocio
+            producto = CType(dgvProductos.CurrentRow.DataBoundItem, Producto)
+            negocio.bajaFisica(producto)
+            MessageBox.Show("Eliminacion Realizada")
+            cargar()
+        Catch ex As Exception
+            MessageBox.Show("Hubo un error: " + ex.Message)
+            Exit Sub
+        End Try
     End Sub
 End Class

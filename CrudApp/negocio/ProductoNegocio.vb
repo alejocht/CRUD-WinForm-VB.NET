@@ -80,26 +80,28 @@ Public Class ProductoNegocio
         Dim tabla As New DataTable
         Try
             datos.setearConsulta("select 
-                                    P.id,
-                                    P.Nombre,
-                                    (select SUM(cantidad) from ventasitems VI inner join ventas on ventas.ID = vi.IDVenta where VI.ID = P.ID AND Month(ventas.Fecha) = 1 ) as ene,
-                                    (select SUM(cantidad) from ventasitems VI inner join ventas on ventas.ID = vi.IDVenta where VI.ID = P.ID AND Month(ventas.Fecha) = 2 ) as feb,
-                                    (select SUM(cantidad) from ventasitems VI inner join ventas on ventas.ID = vi.IDVenta where VI.ID = P.ID AND Month(ventas.Fecha) = 3 ) as mar,
-                                    (select SUM(cantidad) from ventasitems VI inner join ventas on ventas.ID = vi.IDVenta where VI.ID = P.ID AND Month(ventas.Fecha) = 4 ) as abr,
-                                    (select SUM(cantidad) from ventasitems VI inner join ventas on ventas.ID = vi.IDVenta where VI.ID = P.ID AND Month(ventas.Fecha) = 5 ) as may,
-                                    (select SUM(cantidad) from ventasitems VI inner join ventas on ventas.ID = vi.IDVenta where VI.ID = P.ID AND Month(ventas.Fecha) = 6 ) as jun,
-                                    (select SUM(cantidad) from ventasitems VI inner join ventas on ventas.ID = vi.IDVenta where VI.ID = P.ID AND Month(ventas.Fecha) = 7 ) as jul,
-                                    (select SUM(cantidad) from ventasitems VI inner join ventas on ventas.ID = vi.IDVenta where VI.ID = P.ID AND Month(ventas.Fecha) = 8 ) as ago,
-                                    (select SUM(cantidad) from ventasitems VI inner join ventas on ventas.ID = vi.IDVenta where VI.ID = P.ID AND Month(ventas.Fecha) = 9 ) as sep,
-                                    (select SUM(cantidad) from ventasitems VI inner join ventas on ventas.ID = vi.IDVenta where VI.ID = P.ID AND Month(ventas.Fecha) = 10 ) as oct,
-                                    (select SUM(cantidad) from ventasitems VI inner join ventas on ventas.ID = vi.IDVenta where VI.ID = P.ID AND Month(ventas.Fecha) = 11 ) as nov,
-                                    (select SUM(cantidad) from ventasitems VI inner join ventas on ventas.ID = vi.IDVenta where VI.ID = P.ID AND Month(ventas.Fecha) = 12 ) as dic
+                                    P.ID,
+                                    P.nombre,
+                                    coalesce((select SUM(Cantidad) from ventasitems inner join ventas on ventas.ID = ventasitems.IDVenta where IDProducto = P.ID and MONTH(ventas.Fecha) = 1),0) as enero,
+                                    coalesce((select SUM(Cantidad) from ventasitems inner join ventas on ventas.ID = ventasitems.IDVenta where IDProducto = P.ID and MONTH(ventas.Fecha) = 2),0) as febrero,
+                                    coalesce((select SUM(Cantidad) from ventasitems inner join ventas on ventas.ID = ventasitems.IDVenta where IDProducto = P.ID and MONTH(ventas.Fecha) = 3),0) as marzo,
+                                    coalesce((select SUM(Cantidad) from ventasitems inner join ventas on ventas.ID = ventasitems.IDVenta where IDProducto = P.ID and MONTH(ventas.Fecha) = 4),0) as abril,
+                                    coalesce((select SUM(Cantidad) from ventasitems inner join ventas on ventas.ID = ventasitems.IDVenta where IDProducto = P.ID and MONTH(ventas.Fecha) = 5),0) as mayo,
+                                    coalesce((select SUM(Cantidad) from ventasitems inner join ventas on ventas.ID = ventasitems.IDVenta where IDProducto = P.ID and MONTH(ventas.Fecha) = 6),0) as junio,
+                                    coalesce((select SUM(Cantidad) from ventasitems inner join ventas on ventas.ID = ventasitems.IDVenta where IDProducto = P.ID and MONTH(ventas.Fecha) = 7),0) as julio,
+                                    coalesce((select SUM(Cantidad) from ventasitems inner join ventas on ventas.ID = ventasitems.IDVenta where IDProducto = P.ID and MONTH(ventas.Fecha) = 8),0) as agosto,
+                                    coalesce((select SUM(Cantidad) from ventasitems inner join ventas on ventas.ID = ventasitems.IDVenta where IDProducto = P.ID and MONTH(ventas.Fecha) = 9),0) as septiembre,
+                                    coalesce((select SUM(Cantidad) from ventasitems inner join ventas on ventas.ID = ventasitems.IDVenta where IDProducto = P.ID and MONTH(ventas.Fecha) = 10),0) as octubre,
+                                    coalesce((select SUM(Cantidad) from ventasitems inner join ventas on ventas.ID = ventasitems.IDVenta where IDProducto = P.ID and MONTH(ventas.Fecha) = 11),0) as noviembre,
+                                    coalesce((select SUM(Cantidad) from ventasitems inner join ventas on ventas.ID = ventasitems.IDVenta where IDProducto = P.ID and MONTH(ventas.Fecha) = 12),0) as diciembre
                                     from productos P")
             datos.ejecutarLectura()
             tabla.Load(datos.lector)
             Return tabla
         Catch ex As Exception
             Throw ex
+        Finally
+            datos.cerrarConexion()
         End Try
 
     End Function
@@ -135,4 +137,27 @@ Public Class ProductoNegocio
             datos.cerrarConexion()
         End Try
     End Function
+
+    Public Sub bajaFisica(value As Producto)
+        Dim datos1 As New AccesoDatos
+        Dim datos2 As New AccesoDatos
+        Dim resultado As Integer
+        Try
+            datos1.setearConsulta("select count(*) from ventasitems where IDProducto = @id")
+            datos1.setearParametro("@id", value.id)
+            resultado = CType(datos1.ejecutarScalar(), Integer)
+            If resultado > 0 Then
+                Throw New Exception("Producto comprometido en una venta")
+                Exit Sub
+            End If
+            datos2.setearConsulta("delete from productos where ID = @id")
+            datos2.setearParametro("@id", value.id)
+            datos2.ejecutarAccion()
+        Catch ex As Exception
+            Throw ex
+        Finally
+            datos1.cerrarConexion()
+            datos2.cerrarConexion()
+        End Try
+    End Sub
 End Class

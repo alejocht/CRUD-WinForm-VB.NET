@@ -104,5 +104,28 @@ Public Class ClienteNegocio
             datos.cerrarConexion()
         End Try
     End Sub
+    Public Sub bajaFisica(cliente As Cliente)
+        Dim datos1 As New AccesoDatos
+        Dim datos2 As New AccesoDatos
+        Dim resultado As Integer
+        Try
+            datos1.setearConsulta("select COUNT(*) from ventas where IDCliente = @id")
+            datos1.setearParametro("@id", cliente.id)
+            resultado = datos1.ejecutarScalar()
+            datos1.cerrarConexion()
+            If resultado > 0 Then
+                Throw New Exception("Cliente comprometido en Ventas")
+                Exit Sub
+            End If
+            datos2.setearConsulta("delete from clientes where ID = @id")
+            datos2.setearParametro("@id", cliente.id)
+            datos2.ejecutarAccion()
+        Catch ex As Exception
+            Throw ex
+        Finally
+            datos1.cerrarConexion()
+            datos2.cerrarConexion()
+        End Try
+    End Sub
 
 End Class

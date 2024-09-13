@@ -87,4 +87,18 @@ Public Class principalClienteForm
             Exit Sub
         End Try
     End Sub
+
+    Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
+        Try
+            Dim cliente As New Cliente
+            Dim negocio As New ClienteNegocio
+            cliente = CType(dgvClientes.CurrentRow.DataBoundItem, Cliente)
+            negocio.bajaFisica(cliente)
+            MessageBox.Show("Eliminacion Realizada")
+            cargar()
+        Catch ex As Exception
+            MessageBox.Show("Hubo un error: " + ex.Message)
+            Exit Sub
+        End Try
+    End Sub
 End Class

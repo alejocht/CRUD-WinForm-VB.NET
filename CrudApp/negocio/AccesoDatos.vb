@@ -63,6 +63,18 @@ Public Class AccesoDatos
         End Try
     End Sub
 
+    Public Function ejecutarScalar() As Object
+        Dim resultado As Object = Nothing
+        comando.Connection = conexion
+        Try
+            conexion.Open()
+            resultado = comando.ExecuteScalar()
+            Return resultado
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+
     Public Sub setearParametro(nombre As String, valor As Object)
         comando.Parameters.AddWithValue(nombre, valor)
     End Sub
