@@ -4,7 +4,12 @@ Imports negocio
 Public Class principalClienteForm
     Private listado As List(Of Cliente)
     Private Sub clienteForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        cargar()
+        Try
+            cargar()
+        Catch ex As Exception
+            MessageBox.Show("Hubo un error: " + ex.Message)
+            Exit Sub
+        End Try
     End Sub
 
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
@@ -57,7 +62,7 @@ Public Class principalClienteForm
             dgvClientes.Columns("telefono").HeaderText = "Telefono"
             dgvClientes.Columns("correo").HeaderText = "Correo"
         Catch ex As Exception
-            MessageBox.Show("Hubo un error: " + ex.Message)
+            Throw ex
             Exit Sub
         End Try
     End Sub

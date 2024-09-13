@@ -5,16 +5,7 @@ Public Class principalVentaForm
     Private listado As List(Of Venta)
     Private Sub ventaForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            Dim negocio As New VentaNegocio
-            listado = negocio.listar()
-            dgvVentas.DataSource = listado
-
-            dgvVentas.Columns("total").DefaultCellStyle.Format = "$#,##0.00"
-            dgvVentas.Columns("id").HeaderText = "ID"
-            dgvVentas.Columns("cliente").HeaderText = "Cliente"
-            dgvVentas.Columns("fecha").HeaderText = "Fecha"
-            dgvVentas.Columns("total").HeaderText = "Total"
-            dgvVentas.Columns("fecha").DefaultCellStyle.Format = "yyyy-MM-dd"
+            cargar()
         Catch ex As Exception
             MessageBox.Show("Hubo un error: " + ex.Message)
             Exit Sub
@@ -32,16 +23,7 @@ Public Class principalVentaForm
             Dim form2 As New formularioVentaForm
             form2.ShowDialog()
 
-            Dim negocio As New VentaNegocio
-            listado = negocio.listar()
-            dgvVentas.DataSource = Nothing
-            dgvVentas.DataSource = listado
-            dgvVentas.Columns("total").DefaultCellStyle.Format = "$#,##0.00"
-            dgvVentas.Columns("id").HeaderText = "ID"
-            dgvVentas.Columns("cliente").HeaderText = "Cliente"
-            dgvVentas.Columns("fecha").HeaderText = "Fecha"
-            dgvVentas.Columns("total").HeaderText = "Total"
-            dgvVentas.Columns("fecha").DefaultCellStyle.Format = "yyyy-MM-dd"
+            cargar()
         Catch ex As Exception
             MessageBox.Show("Hubo un error: " + ex.Message)
             Exit Sub
@@ -50,5 +32,23 @@ Public Class principalVentaForm
 
     Private Sub dgvVentas_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvVentas.CellContentClick
 
+    End Sub
+
+    Private Sub cargar()
+        Try
+            Dim negocio As New VentaNegocio
+            listado = negocio.listar()
+            dgvVentas.DataSource = listado
+
+            dgvVentas.Columns("total").DefaultCellStyle.Format = "$#,##0.00"
+            dgvVentas.Columns("id").HeaderText = "ID"
+            dgvVentas.Columns("cliente").HeaderText = "Cliente"
+            dgvVentas.Columns("fecha").HeaderText = "Fecha"
+            dgvVentas.Columns("total").HeaderText = "Total"
+            dgvVentas.Columns("fecha").DefaultCellStyle.Format = "yyyy-MM-dd"
+        Catch ex As Exception
+            Throw ex
+            Exit Sub
+        End Try
     End Sub
 End Class

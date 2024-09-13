@@ -24,11 +24,12 @@ Public Class FacturaNegocio
             negocio.agregar(factura.cabecera)
             listadeVentas = negocio.listar()
             Dim ultimoId As Integer = listadeVentas.Last.id
-            negocio.actualizarTotal(ultimoId)
+
             For Each ventaItem In factura.detalle
                 ventaItem.idVenta = ultimoId
                 negocioVentaItem.agregar(ventaItem)
             Next
+            negocio.actualizarTotal(ultimoId)
         Catch ex As Exception
             Throw ex
         End Try
