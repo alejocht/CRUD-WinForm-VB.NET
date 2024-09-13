@@ -84,6 +84,7 @@ Partial Class formularioVentaForm
         Me.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvItems.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvItems.Location = New System.Drawing.Point(22, 151)
+        Me.dgvItems.MultiSelect = False
         Me.dgvItems.Name = "dgvItems"
         Me.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvItems.Size = New System.Drawing.Size(617, 218)
