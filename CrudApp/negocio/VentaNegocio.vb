@@ -101,4 +101,44 @@ Public Class VentaNegocio
             datos.cerrarConexion()
         End Try
     End Sub
+
+    Public Function listarFiltro(filtro As String, tipoFiltro As String) As List(Of Venta)
+        Dim datos As New AccesoDatos
+        Dim lista As New List(Of Venta)
+        Dim cadenaDeFiltro As String = String.Empty
+        Try
+            Select Case tipoFiltro
+                Case "comienza por"
+                    cadenaDeFiltro = "'" + filtro + "%'"
+                Case "contiene"
+                    cadenaDeFiltro = "'%" + filtro + "%'"
+                Case "termina con"
+                    cadenaDeFiltro = "'%" + filtro + "'"
+            End Select
+
+            datos.setearConsulta("SELECT * FROM Ventas inner join clientes on clientes.ID = ventas.IDCliente where cliente like " + cadenaDeFiltro)
+            datos.ejecutarLectura()
+            While (datos.lector.Read())
+                Dim aux As New Venta
+                Dim negocioCliente As New ClienteNegocio
+                aux.id = CType(datos.lector("ID"), Integer)
+                aux.cliente = negocioCliente.listar(CType(datos.lector("IDCliente"), Integer))
+
+                If aux.cliente Is Nothing Then
+                    Throw New Exception
+                End If
+
+                aux.fecha = CType(datos.lector("Fecha"), Date)
+                aux.total = If(IsDBNull(datos.lector("total")), 0, CType(datos.lector("Total"), Decimal))
+
+                actualizarTotal(aux.id)
+                lista.Add(aux)
+            End While
+            Return lista
+        Catch ex As Exception
+            Throw ex
+        Finally
+            datos.cerrarConexion()
+        End Try
+    End Function
 End Class

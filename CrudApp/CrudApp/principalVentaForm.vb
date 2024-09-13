@@ -96,4 +96,28 @@ Public Class principalVentaForm
             Exit Sub
         End Try
     End Sub
+
+    Private Sub btnLupa_Click(sender As Object, e As EventArgs) Handles btnLupa.Click
+        Try
+            Dim filtro As String
+            filtro = txtBusqueda.Text
+            Dim negocio As New VentaNegocio
+
+            listado = negocio.listarFiltro(filtro, "contiene")
+            If listado Is Nothing Then
+                Throw New Exception("No hubo resultados para la busqueda")
+            End If
+            dgvVentas.DataSource = listado
+
+            dgvVentas.Columns("total").DefaultCellStyle.Format = "$#,##0.00"
+            dgvVentas.Columns("id").HeaderText = "ID"
+            dgvVentas.Columns("cliente").HeaderText = "Cliente"
+            dgvVentas.Columns("fecha").HeaderText = "Fecha"
+            dgvVentas.Columns("total").HeaderText = "Total"
+            dgvVentas.Columns("fecha").DefaultCellStyle.Format = "yyyy-MM-dd"
+        Catch ex As Exception
+            MessageBox.Show("Hubo un error: " + ex.Message)
+            Exit Sub
+        End Try
+    End Sub
 End Class

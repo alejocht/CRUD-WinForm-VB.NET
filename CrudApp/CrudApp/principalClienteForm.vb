@@ -66,4 +66,25 @@ Public Class principalClienteForm
             Exit Sub
         End Try
     End Sub
+
+    Private Sub btnLupa_Click(sender As Object, e As EventArgs) Handles btnLupa.Click
+        Try
+            Dim filtro As String
+            filtro = txtBusqueda.Text
+            Dim negocio As New ClienteNegocio
+
+            listado = negocio.listarFiltro(filtro, "contiene")
+            If listado Is Nothing Then
+                Throw New Exception("No hubo resultados para la busqueda")
+            End If
+            dgvClientes.DataSource = listado
+            dgvClientes.Columns("id").HeaderText = "ID"
+            dgvClientes.Columns("cliente").HeaderText = "Nombre"
+            dgvClientes.Columns("telefono").HeaderText = "Telefono"
+            dgvClientes.Columns("correo").HeaderText = "Correo"
+        Catch ex As Exception
+            MessageBox.Show("Hubo un error: " + ex.Message)
+            Exit Sub
+        End Try
+    End Sub
 End Class

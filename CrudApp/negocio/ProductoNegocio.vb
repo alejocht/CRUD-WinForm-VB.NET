@@ -75,8 +75,9 @@ Public Class ProductoNegocio
             datos.cerrarConexion()
         End Try
     End Sub
-    Public Sub reporte()
+    Public Function reporte() As DataTable
         Dim datos As New AccesoDatos
+        Dim tabla As New DataTable
         Try
             datos.setearConsulta("select 
                                     P.id,
@@ -95,10 +96,43 @@ Public Class ProductoNegocio
                                     (select SUM(cantidad) from ventasitems VI inner join ventas on ventas.ID = vi.IDVenta where VI.ID = P.ID AND Month(ventas.Fecha) = 12 ) as dic
                                     from productos P")
             datos.ejecutarLectura()
-
+            tabla.Load(datos.lector)
+            Return tabla
         Catch ex As Exception
             Throw ex
         End Try
 
-    End Sub
+    End Function
+
+    Public Function listarFiltro(filtro As String, tipoFiltro As String) As List(Of Producto)
+        Dim datos As New AccesoDatos
+        Dim lista As New List(Of Producto)
+        Dim cadenaDeFiltro As String = String.Empty
+        Try
+            Select Case tipoFiltro
+                Case "comienza por"
+                    cadenaDeFiltro = "'" + filtro + "%'"
+                Case "contiene"
+                    cadenaDeFiltro = "'%" + filtro + "%'"
+                Case "termina con"
+                    cadenaDeFiltro = "'%" + filtro + "'"
+            End Select
+
+            datos.setearConsulta("SELECT * FROM Productos where nombre like " + cadenaDeFiltro)
+            datos.ejecutarLectura()
+            While (datos.lector.Read())
+                Dim aux As New Producto
+                aux.id = CType(datos.lector("ID"), Integer)
+                aux.nombre = CType(datos.lector("Nombre"), String)
+                aux.precio = CType(datos.lector("Precio"), Decimal)
+                aux.categoria = CType(datos.lector("Categoria"), String)
+                lista.Add(aux)
+            End While
+            Return lista
+        Catch ex As Exception
+            Throw ex
+        Finally
+            datos.cerrarConexion()
+        End Try
+    End Function
 End Class

@@ -73,4 +73,38 @@ Public Class principalProductoForm
             Exit Sub
         End Try
     End Sub
+
+    Private Sub btnLupa_Click(sender As Object, e As EventArgs) Handles btnLupa.Click
+        Try
+            Dim filtro As String
+            filtro = txtBusqueda.Text
+            Dim negocio As New ProductoNegocio
+
+            listado = negocio.listarFiltro(filtro, "contiene")
+            If listado Is Nothing Then
+                Throw New Exception("No hubo resultados para la busqueda")
+            End If
+            dgvProductos.DataSource = listado
+
+            dgvProductos.Columns("precio").DefaultCellStyle.Format = "$#,##0.00"
+            dgvProductos.Columns("id").HeaderText = "ID"
+            dgvProductos.Columns("nombre").HeaderText = "Producto"
+            dgvProductos.Columns("precio").HeaderText = "Precio"
+            dgvProductos.Columns("categoria").HeaderText = "Categoria"
+        Catch ex As Exception
+            MessageBox.Show("Hubo un error: " + ex.Message)
+            Exit Sub
+        End Try
+    End Sub
+
+    Private Sub btnReporte_Click(sender As Object, e As EventArgs) Handles btnReporte.Click
+        For Each form In Application.OpenForms
+            If TypeOf form Is reporteProductoForm Then
+                Exit Sub
+            End If
+        Next
+
+        Dim form2 As New reporteProductoForm()
+        form2.ShowDialog()
+    End Sub
 End Class
