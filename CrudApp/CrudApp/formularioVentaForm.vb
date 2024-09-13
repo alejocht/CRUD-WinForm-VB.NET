@@ -128,13 +128,21 @@ Public Class formularioVentaForm
     End Sub
 
     Private Sub btnModificarItem_Click(sender As Object, e As EventArgs) Handles btnModificarItem.Click
-        Dim id As Integer
-        Dim ventaItem As New VentaItem
-        ventaItem = CType(dgvItems.CurrentRow.DataBoundItem, VentaItem)
-        id = ventaItem.id
-        Dim form As New formularioVentaItemForm(listaDeItems, id)
-        form.ShowDialog()
-        listaDeItems = form.retornarLista()
-        cargarDgv()
+        Try
+            Dim id As Integer
+            Dim ventaItem As New VentaItem
+            If dgvItems.CurrentRow Is Nothing Then
+                Throw New Exception("Debe seleccionar una fila para modificar")
+            End If
+            ventaItem = CType(dgvItems.CurrentRow.DataBoundItem, VentaItem)
+            id = ventaItem.id
+            Dim form As New formularioVentaItemForm(listaDeItems, id)
+            form.ShowDialog()
+            listaDeItems = form.retornarLista()
+            cargarDgv()
+        Catch ex As Exception
+            MessageBox.Show("Hubo un error: " + ex.Message)
+            Exit Sub
+        End Try
     End Sub
 End Class

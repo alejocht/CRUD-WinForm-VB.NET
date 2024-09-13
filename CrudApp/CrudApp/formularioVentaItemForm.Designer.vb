@@ -70,6 +70,7 @@ Partial Class formularioVentaItemForm
         '
         'cmbProducto
         '
+        Me.cmbProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbProducto.FormattingEnabled = True
         Me.cmbProducto.Location = New System.Drawing.Point(136, 54)
         Me.cmbProducto.Name = "cmbProducto"

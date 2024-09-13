@@ -40,6 +40,7 @@ Public Class formularioVentaItemForm
                 aux.precioUnitario = aux.producto.precio
                 aux.precioTotal = aux.precioUnitario * aux.cantidad
             End If
+            nuevaLista = lista
         Catch ex As Exception
             MessageBox.Show("Hubo un error: " + ex.Message)
             Exit Sub
@@ -47,6 +48,7 @@ Public Class formularioVentaItemForm
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        nuevaLista = lista
         Me.Close()
     End Sub
 End Class
