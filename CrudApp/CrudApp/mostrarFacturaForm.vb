@@ -14,6 +14,8 @@ Public Class mostrarFacturaForm
         lblNombreCliente.Text = factura.cabecera.cliente.cliente
         lblFechaFact.Text = factura.cabecera.fecha.ToString("yyyy-MM-dd")
         lblImporteTotal.Text = "$" + factura.cabecera.total.ToString
+        Label4.Text = factura.cabecera.cliente.telefono
+        Label2.Text = factura.cabecera.cliente.correo
         lblID.Text = factura.cabecera.id
 
         dgvItems.Columns("id").Visible = False
@@ -24,5 +26,9 @@ Public Class mostrarFacturaForm
         dgvItems.Columns("precioTotal").HeaderText = "SubTotal"
         dgvItems.Columns("precioUnitario").DefaultCellStyle.Format = "$#,##0.00"
         dgvItems.Columns("precioTotal").DefaultCellStyle.Format = "$#,##0.00"
+    End Sub
+
+    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
+
     End Sub
 End Class
