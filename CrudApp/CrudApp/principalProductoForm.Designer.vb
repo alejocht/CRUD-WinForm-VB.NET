@@ -46,7 +46,7 @@ Partial Class principalProductoForm
         Me.btnAgregar.Location = New System.Drawing.Point(614, 37)
         Me.btnAgregar.Name = "btnAgregar"
         Me.btnAgregar.Size = New System.Drawing.Size(122, 23)
-        Me.btnAgregar.TabIndex = 1
+        Me.btnAgregar.TabIndex = 0
         Me.btnAgregar.Text = "Agregar Producto"
         Me.btnAgregar.UseVisualStyleBackColor = True
         '
@@ -55,7 +55,7 @@ Partial Class principalProductoForm
         Me.btnModificar.Location = New System.Drawing.Point(614, 75)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(122, 23)
-        Me.btnModificar.TabIndex = 2
+        Me.btnModificar.TabIndex = 1
         Me.btnModificar.Text = "Modificar Producto"
         Me.btnModificar.UseVisualStyleBackColor = True
         '

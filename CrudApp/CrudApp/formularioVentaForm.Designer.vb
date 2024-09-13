@@ -48,7 +48,7 @@ Partial Class formularioVentaForm
         Me.fechaPicker.Location = New System.Drawing.Point(401, 32)
         Me.fechaPicker.Name = "fechaPicker"
         Me.fechaPicker.Size = New System.Drawing.Size(200, 20)
-        Me.fechaPicker.TabIndex = 0
+        Me.fechaPicker.TabIndex = 1
         '
         'cmbCliente
         '
@@ -57,7 +57,7 @@ Partial Class formularioVentaForm
         Me.cmbCliente.Location = New System.Drawing.Point(102, 35)
         Me.cmbCliente.Name = "cmbCliente"
         Me.cmbCliente.Size = New System.Drawing.Size(200, 21)
-        Me.cmbCliente.TabIndex = 1
+        Me.cmbCliente.TabIndex = 0
         '
         'lblCliente
         '
@@ -95,7 +95,7 @@ Partial Class formularioVentaForm
         Me.btnAgregar.Location = New System.Drawing.Point(543, 542)
         Me.btnAgregar.Name = "btnAgregar"
         Me.btnAgregar.Size = New System.Drawing.Size(75, 23)
-        Me.btnAgregar.TabIndex = 5
+        Me.btnAgregar.TabIndex = 3
         Me.btnAgregar.Text = "Guardar"
         Me.btnAgregar.UseVisualStyleBackColor = True
         '
@@ -104,7 +104,7 @@ Partial Class formularioVentaForm
         Me.btnCancelar.Location = New System.Drawing.Point(33, 542)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(75, 23)
-        Me.btnCancelar.TabIndex = 6
+        Me.btnCancelar.TabIndex = 4
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = True
         '
@@ -131,7 +131,7 @@ Partial Class formularioVentaForm
         Me.btnAgregarItem.Location = New System.Drawing.Point(33, 80)
         Me.btnAgregarItem.Name = "btnAgregarItem"
         Me.btnAgregarItem.Size = New System.Drawing.Size(75, 23)
-        Me.btnAgregarItem.TabIndex = 9
+        Me.btnAgregarItem.TabIndex = 2
         Me.btnAgregarItem.Text = "Agregar Item"
         Me.btnAgregarItem.UseVisualStyleBackColor = True
         '
@@ -145,7 +145,7 @@ Partial Class formularioVentaForm
         Me.groupBoxNuevoItem.Location = New System.Drawing.Point(22, 387)
         Me.groupBoxNuevoItem.Name = "groupBoxNuevoItem"
         Me.groupBoxNuevoItem.Size = New System.Drawing.Size(617, 124)
-        Me.groupBoxNuevoItem.TabIndex = 10
+        Me.groupBoxNuevoItem.TabIndex = 2
         Me.groupBoxNuevoItem.TabStop = False
         Me.groupBoxNuevoItem.Text = "Nuevo Item"
         '
@@ -156,7 +156,7 @@ Partial Class formularioVentaForm
         Me.txtCantidad.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.txtCantidad.Name = "txtCantidad"
         Me.txtCantidad.Size = New System.Drawing.Size(144, 20)
-        Me.txtCantidad.TabIndex = 21
+        Me.txtCantidad.TabIndex = 1
         Me.txtCantidad.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'cmbProducto
@@ -166,7 +166,7 @@ Partial Class formularioVentaForm
         Me.cmbProducto.Location = New System.Drawing.Point(99, 27)
         Me.cmbProducto.Name = "cmbProducto"
         Me.cmbProducto.Size = New System.Drawing.Size(145, 21)
-        Me.cmbProducto.TabIndex = 20
+        Me.cmbProducto.TabIndex = 0
         '
         'lblCategoria
         '

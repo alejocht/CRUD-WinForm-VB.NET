@@ -37,7 +37,7 @@ Partial Class formularioClienteForm
         Me.btnCancelar.Location = New System.Drawing.Point(69, 190)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(75, 23)
-        Me.btnCancelar.TabIndex = 15
+        Me.btnCancelar.TabIndex = 4
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = True
         '
@@ -47,7 +47,7 @@ Partial Class formularioClienteForm
         Me.btnAgregar.Location = New System.Drawing.Point(182, 190)
         Me.btnAgregar.Name = "btnAgregar"
         Me.btnAgregar.Size = New System.Drawing.Size(75, 23)
-        Me.btnAgregar.TabIndex = 14
+        Me.btnAgregar.TabIndex = 3
         Me.btnAgregar.Text = "Guardar"
         Me.btnAgregar.UseVisualStyleBackColor = True
         '
@@ -56,7 +56,7 @@ Partial Class formularioClienteForm
         Me.txtCorreo.Location = New System.Drawing.Point(138, 126)
         Me.txtCorreo.Name = "txtCorreo"
         Me.txtCorreo.Size = New System.Drawing.Size(100, 20)
-        Me.txtCorreo.TabIndex = 13
+        Me.txtCorreo.TabIndex = 2
         '
         'lblCorreo
         '
@@ -72,7 +72,7 @@ Partial Class formularioClienteForm
         Me.txtTelefono.Location = New System.Drawing.Point(138, 91)
         Me.txtTelefono.Name = "txtTelefono"
         Me.txtTelefono.Size = New System.Drawing.Size(100, 20)
-        Me.txtTelefono.TabIndex = 11
+        Me.txtTelefono.TabIndex = 1
         '
         'lblTelefono
         '
@@ -88,7 +88,7 @@ Partial Class formularioClienteForm
         Me.txtNombre.Location = New System.Drawing.Point(138, 54)
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(100, 20)
-        Me.txtNombre.TabIndex = 9
+        Me.txtNombre.TabIndex = 0
         '
         'lblNombre
         '

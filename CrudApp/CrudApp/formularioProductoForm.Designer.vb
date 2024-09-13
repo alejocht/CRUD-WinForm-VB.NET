@@ -46,14 +46,14 @@ Partial Class formularioProductoForm
         Me.txtNombre.Location = New System.Drawing.Point(135, 53)
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(100, 20)
-        Me.txtNombre.TabIndex = 1
+        Me.txtNombre.TabIndex = 0
         '
         'txtPrecio
         '
         Me.txtPrecio.Location = New System.Drawing.Point(135, 90)
         Me.txtPrecio.Name = "txtPrecio"
         Me.txtPrecio.Size = New System.Drawing.Size(100, 20)
-        Me.txtPrecio.TabIndex = 3
+        Me.txtPrecio.TabIndex = 1
         '
         'lblPrecio
         '
@@ -69,7 +69,7 @@ Partial Class formularioProductoForm
         Me.txtCategoria.Location = New System.Drawing.Point(135, 125)
         Me.txtCategoria.Name = "txtCategoria"
         Me.txtCategoria.Size = New System.Drawing.Size(100, 20)
-        Me.txtCategoria.TabIndex = 5
+        Me.txtCategoria.TabIndex = 2
         '
         'lblCategoria
         '
@@ -86,7 +86,7 @@ Partial Class formularioProductoForm
         Me.btnAgregar.Location = New System.Drawing.Point(179, 189)
         Me.btnAgregar.Name = "btnAgregar"
         Me.btnAgregar.Size = New System.Drawing.Size(75, 23)
-        Me.btnAgregar.TabIndex = 6
+        Me.btnAgregar.TabIndex = 3
         Me.btnAgregar.Text = "Guardar"
         Me.btnAgregar.UseVisualStyleBackColor = True
         '
@@ -95,7 +95,7 @@ Partial Class formularioProductoForm
         Me.btnCancelar.Location = New System.Drawing.Point(66, 189)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(75, 23)
-        Me.btnCancelar.TabIndex = 7
+        Me.btnCancelar.TabIndex = 4
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = True
         '

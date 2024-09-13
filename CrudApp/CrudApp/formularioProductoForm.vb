@@ -21,13 +21,23 @@ Public Class formularioProductoForm
 
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         Try
+            If producto Is Nothing Then
+                producto = New Producto
+            End If
+
             Dim negocio As New ProductoNegocio
-            Dim aux As New Producto
-            aux.nombre = txtNombre.Text
-            aux.precio = txtPrecio.Text
-            aux.categoria = txtCategoria.Text
-            negocio.agregar(aux)
-            MessageBox.Show("Producto " + aux.nombre + " agregado con exito")
+            producto.nombre = txtNombre.Text
+            producto.precio = txtPrecio.Text
+            producto.categoria = txtCategoria.Text
+
+            If producto.id = 0 Then
+                negocio.agregar(producto)
+                MessageBox.Show("Producto " + producto.nombre + " agregado con exito")
+            Else
+                negocio.modificar(producto)
+                MessageBox.Show("Producto " + producto.nombre + " modificado con exito")
+            End If
+
             Me.Close()
         Catch ex As Exception
             MessageBox.Show("Hubo un error: " + ex.Message)
