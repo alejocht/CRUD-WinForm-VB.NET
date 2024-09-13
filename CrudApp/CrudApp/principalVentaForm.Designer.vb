@@ -24,6 +24,8 @@ Partial Class principalVentaForm
     Private Sub InitializeComponent()
         Me.dgvVentas = New System.Windows.Forms.DataGridView()
         Me.btnAgregar = New System.Windows.Forms.Button()
+        Me.btnModificar = New System.Windows.Forms.Button()
+        Me.btnMostrarFactura = New System.Windows.Forms.Button()
         CType(Me.dgvVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -44,16 +46,36 @@ Partial Class principalVentaForm
         '
         Me.btnAgregar.Location = New System.Drawing.Point(609, 37)
         Me.btnAgregar.Name = "btnAgregar"
-        Me.btnAgregar.Size = New System.Drawing.Size(122, 23)
+        Me.btnAgregar.Size = New System.Drawing.Size(134, 23)
         Me.btnAgregar.TabIndex = 2
         Me.btnAgregar.Text = "Agregar Venta"
         Me.btnAgregar.UseVisualStyleBackColor = True
+        '
+        'btnModificar
+        '
+        Me.btnModificar.Location = New System.Drawing.Point(609, 75)
+        Me.btnModificar.Name = "btnModificar"
+        Me.btnModificar.Size = New System.Drawing.Size(134, 23)
+        Me.btnModificar.TabIndex = 3
+        Me.btnModificar.Text = "Modificar Venta"
+        Me.btnModificar.UseVisualStyleBackColor = True
+        '
+        'btnMostrarFactura
+        '
+        Me.btnMostrarFactura.Location = New System.Drawing.Point(609, 115)
+        Me.btnMostrarFactura.Name = "btnMostrarFactura"
+        Me.btnMostrarFactura.Size = New System.Drawing.Size(134, 23)
+        Me.btnMostrarFactura.TabIndex = 4
+        Me.btnMostrarFactura.Text = "Mostrar detalle de Venta"
+        Me.btnMostrarFactura.UseVisualStyleBackColor = True
         '
         'principalVentaForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.btnMostrarFactura)
+        Me.Controls.Add(Me.btnModificar)
         Me.Controls.Add(Me.btnAgregar)
         Me.Controls.Add(Me.dgvVentas)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -70,4 +92,6 @@ Partial Class principalVentaForm
 
     Friend WithEvents dgvVentas As DataGridView
     Friend WithEvents btnAgregar As Button
+    Friend WithEvents btnModificar As Button
+    Friend WithEvents btnMostrarFactura As Button
 End Class

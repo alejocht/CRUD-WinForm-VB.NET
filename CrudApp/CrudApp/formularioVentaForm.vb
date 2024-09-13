@@ -3,7 +3,16 @@ Imports dominio.modelo
 Imports negocio
 
 Public Class formularioVentaForm
+    Private factura As Factura
     Private listaDeItems As New List(Of VentaItem)
+
+    Public Sub New()
+        InitializeComponent()
+    End Sub
+    Public Sub New(value As Factura)
+        InitializeComponent()
+        factura = value
+    End Sub
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles lblCliente.Click
 
     End Sub
@@ -14,15 +23,14 @@ Public Class formularioVentaForm
 
     Private Sub formularioVentaForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            Dim negocioCliente As New ClienteNegocio
-            cmbCliente.DataSource = negocioCliente.listar()
-            cmbCliente.DisplayMember = "cliente"
-            cmbCliente.ValueMember = "id"
-
-            Dim negocioProducto As New ProductoNegocio
-            cmbProducto.DataSource = negocioProducto.listar()
-            cmbProducto.DisplayMember = "nombre"
-            cmbProducto.ValueMember = "id"
+            cargarCmb()
+            If factura IsNot Nothing Then
+                cmbCliente.SelectedIndex = (factura.cabecera.cliente.id) - 1
+                fechaPicker.Value = factura.cabecera.fecha
+                lblImporteTotal.Text = "$" + factura.cabecera.total.ToString
+                listaDeItems = factura.detalle
+            End If
+            cargarDgv()
 
         Catch ex As Exception
             MessageBox.Show("Hubo un error: " + ex.Message)
@@ -32,7 +40,10 @@ Public Class formularioVentaForm
 
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         Try
-            Dim factura As New Factura
+            If factura Is Nothing Then
+                factura = New Factura
+            End If
+
             Dim negocio As New FacturaNegocio
             factura.cabecera.cliente = CType(cmbCliente.SelectedItem, Cliente)
             factura.cabecera.fecha = CType(fechaPicker.Value, Date)
@@ -44,9 +55,14 @@ Public Class formularioVentaForm
             factura.cabecera.total = listaDeItems.Sum(Function(p) p.precioTotal)
             factura.detalle = listaDeItems
 
-            negocio.agregar(factura)
+            If factura.cabecera.id = 0 Then
+                negocio.agregar(factura)
+                MessageBox.Show("Factura guardada correctamente")
+            Else
+                negocio.modificar(factura)
+                MessageBox.Show("Factura guardada correctamente")
+            End If
 
-            MessageBox.Show("Factura guardada correctamente")
             dgvItems.DataSource = Nothing
             listaDeItems = Nothing
         Catch ex As Exception
@@ -65,6 +81,36 @@ Public Class formularioVentaForm
             ventaItem.cantidad = txtCantidad.Value
             ventaItem.precioTotal = ventaItem.precioUnitario * ventaItem.cantidad
             listaDeItems.Add(ventaItem)
+
+            cargarDgv()
+            lblImporteTotal.Text = listaDeItems.Sum(Function(p) p.precioTotal).ToString("$#,##0.00")
+        Catch ex As Exception
+            MessageBox.Show("Hubo un error: " + ex.Message)
+            Exit Sub
+        End Try
+    End Sub
+
+    Private Sub dgvItems_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvItems.CellContentClick
+
+    End Sub
+
+    Private Sub cargarCmb()
+        Try
+            Dim negocioCliente As New ClienteNegocio
+            cmbCliente.DataSource = negocioCliente.listar()
+            cmbCliente.DisplayMember = "cliente"
+            cmbCliente.ValueMember = "id"
+
+            Dim negocioProducto As New ProductoNegocio
+            cmbProducto.DataSource = negocioProducto.listar()
+            cmbProducto.DisplayMember = "nombre"
+            cmbProducto.ValueMember = "id"
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Private Sub cargarDgv()
+        Try
             dgvItems.DataSource = Nothing
             dgvItems.DataSource = listaDeItems
 
@@ -76,15 +122,19 @@ Public Class formularioVentaForm
             dgvItems.Columns("precioTotal").HeaderText = "SubTotal"
             dgvItems.Columns("precioUnitario").DefaultCellStyle.Format = "$#,##0.00"
             dgvItems.Columns("precioTotal").DefaultCellStyle.Format = "$#,##0.00"
-
-            lblImporteTotal.Text = listaDeItems.Sum(Function(p) p.precioTotal).ToString("$#,##0.00")
         Catch ex As Exception
-            MessageBox.Show("Hubo un error: " + ex.Message)
-            Exit Sub
+            Throw ex
         End Try
     End Sub
 
-    Private Sub dgvItems_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvItems.CellContentClick
-
+    Private Sub btnModificarItem_Click(sender As Object, e As EventArgs) Handles btnModificarItem.Click
+        Dim id As Integer
+        Dim ventaItem As New VentaItem
+        ventaItem = CType(dgvItems.CurrentRow.DataBoundItem, VentaItem)
+        id = ventaItem.id
+        Dim form As New formularioVentaItemForm(listaDeItems, id)
+        form.ShowDialog()
+        listaDeItems = form.retornarLista()
+        cargarDgv()
     End Sub
 End Class

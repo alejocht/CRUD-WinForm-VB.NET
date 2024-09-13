@@ -33,6 +33,7 @@ Partial Class formularioVentaForm
         Me.lblImporteTotal = New System.Windows.Forms.Label()
         Me.btnAgregarItem = New System.Windows.Forms.Button()
         Me.groupBoxNuevoItem = New System.Windows.Forms.GroupBox()
+        Me.btnModificarItem = New System.Windows.Forms.Button()
         Me.txtCantidad = New System.Windows.Forms.NumericUpDown()
         Me.cmbProducto = New System.Windows.Forms.ComboBox()
         Me.lblCategoria = New System.Windows.Forms.Label()
@@ -137,6 +138,7 @@ Partial Class formularioVentaForm
         '
         'groupBoxNuevoItem
         '
+        Me.groupBoxNuevoItem.Controls.Add(Me.btnModificarItem)
         Me.groupBoxNuevoItem.Controls.Add(Me.txtCantidad)
         Me.groupBoxNuevoItem.Controls.Add(Me.btnAgregarItem)
         Me.groupBoxNuevoItem.Controls.Add(Me.cmbProducto)
@@ -148,6 +150,16 @@ Partial Class formularioVentaForm
         Me.groupBoxNuevoItem.TabIndex = 2
         Me.groupBoxNuevoItem.TabStop = False
         Me.groupBoxNuevoItem.Text = "Nuevo Item"
+        '
+        'btnModificarItem
+        '
+        Me.btnModificarItem.AutoEllipsis = True
+        Me.btnModificarItem.Location = New System.Drawing.Point(135, 80)
+        Me.btnModificarItem.Name = "btnModificarItem"
+        Me.btnModificarItem.Size = New System.Drawing.Size(154, 23)
+        Me.btnModificarItem.TabIndex = 20
+        Me.btnModificarItem.Text = "Modificar Item Seleccionado"
+        Me.btnModificarItem.UseVisualStyleBackColor = True
         '
         'txtCantidad
         '
@@ -202,8 +214,9 @@ Partial Class formularioVentaForm
         Me.Controls.Add(Me.cmbCliente)
         Me.Controls.Add(Me.fechaPicker)
         Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(679, 627)
         Me.MinimizeBox = False
-        Me.MinimumSize = New System.Drawing.Size(411, 627)
+        Me.MinimumSize = New System.Drawing.Size(679, 627)
         Me.Name = "formularioVentaForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "formularioVentaForm"
@@ -231,4 +244,5 @@ Partial Class formularioVentaForm
     Friend WithEvents cmbProducto As ComboBox
     Friend WithEvents lblCategoria As Label
     Friend WithEvents lblProducto As Label
+    Friend WithEvents btnModificarItem As Button
 End Class

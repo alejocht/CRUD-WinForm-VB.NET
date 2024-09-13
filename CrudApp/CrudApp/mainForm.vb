@@ -3,6 +3,7 @@
 
         For Each form In Application.OpenForms
             If TypeOf form Is principalClienteForm Then
+                MessageBox.Show("Ya existe esta ventana abierta")
                 Exit Sub
             End If
 
@@ -17,6 +18,7 @@
 
         For Each form In Application.OpenForms
             If TypeOf form Is principalProductoForm Then
+                MessageBox.Show("Ya existe esta ventana abierta")
                 Exit Sub
             End If
         Next
@@ -29,6 +31,7 @@
     Private Sub VentasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VentasToolStripMenuItem.Click
         For Each form In Application.OpenForms
             If TypeOf form Is principalVentaForm Then
+                MessageBox.Show("Ya existe esta ventana abierta")
                 Exit Sub
             End If
         Next

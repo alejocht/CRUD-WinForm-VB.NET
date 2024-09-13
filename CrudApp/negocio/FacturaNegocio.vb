@@ -34,4 +34,27 @@ Public Class FacturaNegocio
             Throw ex
         End Try
     End Sub
+
+    Public Sub modificar(factura As Factura)
+        Try
+            Dim negocio As New VentaNegocio
+            Dim negocioVentaItem As New VentaItemNegocio
+
+            negocio.modificar(factura.cabecera)
+
+            For Each ventaItem In factura.detalle
+                ventaItem.idVenta = factura.cabecera.id
+                If ventaItem.id = 0 Then
+                    negocioVentaItem.agregar(ventaItem)
+                Else
+                    negocioVentaItem.modificar(ventaItem)
+                End If
+
+            Next
+            negocio.actualizarTotal(factura.cabecera.id)
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Sub
 End Class

@@ -91,6 +91,18 @@
     <Compile Include="formularioVentaForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="formularioVentaItemForm.Designer.vb">
+      <DependentUpon>formularioVentaItemForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="formularioVentaItemForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mostrarFacturaForm.Designer.vb">
+      <DependentUpon>mostrarFacturaForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="mostrarFacturaForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="principalClienteForm.Designer.vb">
       <DependentUpon>principalClienteForm.vb</DependentUpon>
     </Compile>
@@ -141,6 +153,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formularioVentaForm.resx">
       <DependentUpon>formularioVentaForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularioVentaItemForm.resx">
+      <DependentUpon>formularioVentaItemForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mostrarFacturaForm.resx">
+      <DependentUpon>mostrarFacturaForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="principalClienteForm.resx">
       <DependentUpon>principalClienteForm.vb</DependentUpon>

@@ -8,7 +8,7 @@
         Private _precioTotal As Decimal
 
         Public Sub New()
-
+            _producto = New Producto
         End Sub
 
         Public Sub New(ByVal id As Integer, ByVal idVenta As Integer, idProducto As Integer, precioUnitario As Decimal, cantidad As Decimal, precioTotal As Decimal)
