@@ -30,6 +30,10 @@ Public Class formularioProductoForm
             producto.precio = txtPrecio.Text
             producto.categoria = txtCategoria.Text
 
+            If producto.precio <= 0 Then
+                Throw New Exception("El precio no puede ser menor o igual a $0")
+            End If
+
             If producto.id = 0 Then
                 negocio.agregar(producto)
                 MessageBox.Show("Producto " + producto.nombre + " agregado con exito")
@@ -53,11 +57,8 @@ Public Class formularioProductoForm
                 txtCategoria.Text = producto.categoria
             End If
         Catch ex As Exception
-
+            MessageBox.Show("Hubo un error: " + ex.Message)
         End Try
     End Sub
 
-    Private Sub modificar()
-
-    End Sub
 End Class

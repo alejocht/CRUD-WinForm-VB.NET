@@ -58,9 +58,11 @@ Public Class formularioVentaForm
             If factura.cabecera.id = 0 Then
                 negocio.agregar(factura)
                 MessageBox.Show("Factura guardada correctamente")
+                Me.Close()
             Else
                 negocio.modificar(factura)
                 MessageBox.Show("Factura guardada correctamente")
+                Me.Close()
             End If
 
             dgvItems.DataSource = Nothing
